@@ -23,21 +23,6 @@ namespace Exercie01Contacts.Controllers
             return View();
         }
 
-        public string ToutLesContacts()
-        {
-            return "Je suis la page pour afficher tous les contacts.";
-        }
-
-        public string AfficherContact()
-        {
-            return "Je suis la page pour afficher un contacts.";
-        }
-
-        public string AjouterContact()
-        {
-            return "Je suis la page pour ajouter un contacts.";
-        }
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
