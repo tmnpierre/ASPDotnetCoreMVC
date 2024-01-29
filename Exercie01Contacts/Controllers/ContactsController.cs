@@ -9,9 +9,9 @@ namespace Exercie01Contacts.Controllers
             return "Je suis la page pour afficher tous les contacts.";
         }
 
-        public string Details()
+        public string Details(int id)
         {
-            return "Je suis la page pour afficher un contacts.";
+            return $"Je suis la page pour afficher le contact #{id} en detail ...";
         }
 
         public string Add()
