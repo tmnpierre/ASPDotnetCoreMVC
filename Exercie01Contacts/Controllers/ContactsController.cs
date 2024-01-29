@@ -4,19 +4,19 @@ namespace Exercie01Contacts.Controllers
 {
     public class ContactsController : Controller
     {
-        public string Index()
+        public IActionResult Index()
         {
-            return "Je suis la page pour afficher tous les contacts.";
+            return View();
         }
 
-        public string Details(int id)
+        public IActionResult Details()
         {
-            return $"Je suis la page pour afficher le contact #{id} en detail ...";
+            return View();
         }
 
-        public string Add()
+        public IActionResult Add()
         {
-            return "Je suis la page pour ajouter un contacts.";
+            return View();
         }
     }
 }
