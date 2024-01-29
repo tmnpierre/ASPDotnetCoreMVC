@@ -24,4 +24,31 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
+app.MapControllerRoute(
+    name: "customRoute",
+    pattern: "Contacts/Index",
+    new
+    {
+        Controller = "Home",
+        Action = "ToutLesContacts"
+    });
+
+app.MapControllerRoute(
+    name: "customRoute",
+    pattern: "Contacts/Details",
+    new
+    {
+        Controller = "Home",
+        Action = "AfficherContact"
+    });
+
+app.MapControllerRoute(
+    name: "customRoute",
+    pattern: "Contacts/Add",
+    new
+    {
+        Controller = "Home",
+        Action = "AjouterContact"
+    });
+
 app.Run();
