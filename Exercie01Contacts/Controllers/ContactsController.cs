@@ -2,7 +2,7 @@
 
 namespace Exercie01Contacts.Controllers
 {
-    public class Contacts : Controller
+    public class ContactsController : Controller
     {
         public string Index()
         {
