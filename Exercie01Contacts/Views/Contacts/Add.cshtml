@@ -1,28 +1,23 @@
-﻿@model List<Exercie01Contacts.Models.Contacts>
-@* ViewBag.Title = "Ajouter un Contact"; *@  <!-- Commenté -->
-@* ViewData["Title"] = "Add"; *@
-
-@{
-    ViewBag.Title = "Ajouter un Contact";
-    ViewData["Title"] = "Add";
-}
-
-<div class="container mt-4">
+﻿<div class="container mt-4">
     <div class="text-center">
-        <h1 class="display-4">@ViewBag.Title</h1>
-        <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+        <h1 class="display-4">Ajouter un Contact</h1>
     </div>
 
-    <form>
+    <form asp-action="Add" method="post">
         <div class="form-group">
             <label for="name">Nom</label>
-            <input type="text" class="form-control" id="name" placeholder="Entrez le nom">
+            <input type="text" class="form-control" id="name" name="Name" placeholder="Entrez le nom">
         </div>
         <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" placeholder="Entrez l'email">
+            <input type="email" class="form-control" id="email" name="Email" placeholder="Entrez l'email">
         </div>
         <br />
         <button type="submit" class="btn btn-primary">Ajouter</button>
+        <br />
     </form>
+    <br />
+    <a href="@Url.Action("Index", "Contacts")" class="btn btn-secondary">Retour à la liste</a>
+    <br />
+    <a href="/" class="btn btn-secondary">Page d'accueil</a>
 </div>

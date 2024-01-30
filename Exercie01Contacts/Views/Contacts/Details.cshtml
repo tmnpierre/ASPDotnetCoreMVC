@@ -1,26 +1,19 @@
-﻿@* ViewData["Title"] = "Details"; *@
-@* ViewBag.Title = "Details"; *@
-
-@{
-    ViewData["Title"] = "Details";
-    var contact = Model as Contacts;
-}
+﻿@model Exercie01Contacts.Models.Contacts
 
 <div class="container mt-4">
     <div class="text-center">
         <h1 class="display-4">Détails du Contact</h1>
-        <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
     </div>
 
-    @if (contact != null)
+    @if (Model != null)
     {
         <div class="card">
             <div class="card-header">
                 Détails
             </div>
             <div class="card-body">
-                <h5 class="card-title">@contact.Name</h5>
-                <p class="card-text">@contact.Email</p>
+                <h5 class="card-title">@Model.Name</h5>
+                <p class="card-text">@Model.Email</p>
                 <a href="@Url.Action("Index", "Contacts")" class="btn btn-primary">Retour à la liste</a>
             </div>
         </div>

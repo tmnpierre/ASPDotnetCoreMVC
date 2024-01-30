@@ -12,5 +12,7 @@
             Name = name;
             Email = email;
         }
+
+        public Contacts() { }
     }
 }
