@@ -1,9 +1,29 @@
 ﻿@{
     ViewData["Title"] = "Details";
+    var contact = Model as Contacts;
 }
 
-<div class="text-center">
-    <h1 class="display-4">Je suis la page pour afficher un contact.</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<div class="container mt-4">
+    <div class="text-center">
+        <h1 class="display-4">Détails du Contact</h1>
+        <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    </div>
 
+    @if (contact != null)
+    {
+        <div class="card">
+            <div class="card-header">
+                Détails
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">@contact.Name</h5>
+                <p class="card-text">@contact.Email</p>
+                <a href="@Url.Action("Index", "Contacts")" class="btn btn-primary">Retour à la liste</a>
+            </div>
+        </div>
+    }
+    else
+    {
+        <p>Contact non trouvé.</p>
+    }
+</div>

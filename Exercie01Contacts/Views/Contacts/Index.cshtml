@@ -2,8 +2,33 @@
     ViewData["Title"] = "Index";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Je suis la page pour afficher tous les contacts.</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<div class="container mt-4">
+    <div class="text-center">
+        <h1 class="display-4">Affichage de tous les contacts</h1>
+        <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    </div>
 
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom</th>
+                <th>Email</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var contact in Model)
+            {
+                <tr>
+                    <td>@contact.ID</td>
+                    <td>@contact.Name</td>
+                    <td>@contact.Email</td>
+                    <td>
+                        <a href="@Url.Action("Details", "Contacts", new { id = contact.ID })" class="btn btn-primary">Détails</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
