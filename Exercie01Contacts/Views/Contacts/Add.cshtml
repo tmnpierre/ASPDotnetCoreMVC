@@ -1,4 +1,10 @@
-﻿<div class="container mt-4">
+﻿@model Exercie01Contacts.Models.Contacts
+
+@{
+    ViewData["Title"] = "Add";
+}
+
+<div class="container mt-4">
     <div class="text-center">
         <h1 class="display-4">Ajouter un Contact</h1>
     </div>
@@ -14,10 +20,8 @@
         </div>
         <br />
         <button type="submit" class="btn btn-primary">Ajouter</button>
-        <br />
     </form>
     <br />
     <a href="@Url.Action("Index", "Contacts")" class="btn btn-secondary">Retour à la liste</a>
-    <br />
     <a href="/" class="btn btn-secondary">Page d'accueil</a>
 </div>
