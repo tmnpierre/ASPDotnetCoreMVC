@@ -1,33 +1,26 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Exercie01Contacts.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Exercie01Contacts.Controllers
 {
     public class ContactsController : Controller
     {
-        private int ID { get; set; }
-        private string Name { get; set; }
-        private string Email { get; set; }
 
-        public ContactsController(int id, string name, string email)
+        private static List<Contacts> contacts = new List<Contacts>()
         {
-            ID = id;
-            Name = name;
-            Email = email;
-        }
+            new Contacts(1, "Jean Bon", "jeanbon@email.fr"),
+            new Contacts(2, "Bernard Lermitte", "bernardlermitte@email.fr")
+        };
+
         public IActionResult Index()
         {
-            List<ContactsController> contacts = new List<ContactsController>();
-            {
-                contacts.Add(new ContactsController(ID = 1, Name = "Jean Bon", Email = "jeanbon@emial.fr"));
-                contacts.Add(new ContactsController(ID = 2, Name = "Bernard Lermitte", Email = "bernardlermitte@emial.fr"));
-            }
-
-            return View();
+            return View(contacts);
         }
 
-        public IActionResult Details()
+        public IActionResult Details(int id)
         {
-            return View();
+            var contact = contacts.Find(c => c.ID == id);
+            return View(contact);
         }
 
         public IActionResult Add()
