@@ -2,7 +2,7 @@
 
 namespace Exercie01Contacts.Models
 {
-    public class Contacts
+    public class Contact
     {
         public int Id { get; set; }
 
@@ -12,9 +12,9 @@ namespace Exercie01Contacts.Models
         [DisplayName("Email")]
         public string Email { get; set; }
 
-        public Contacts() { }
+        public Contact() { }
 
-        public Contacts(int id, string name, string email)
+        public Contact(int id, string name, string email)
         {
             Id = id;
             Name = name;

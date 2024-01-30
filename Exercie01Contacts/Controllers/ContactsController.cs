@@ -5,10 +5,10 @@ namespace Exercie01Contacts.Controllers
 {
     public class ContactsController : Controller
     {
-        private static List<Contacts> contacts = new List<Contacts>()
+        private static List<Contact> contacts = new List<Contact>()
         {
-            new Contacts(1, "Jean Bon", "jeanbon@email.fr"),
-            new Contacts(2, "Bernard Lermitte", "bernardlermitte@email.fr")
+            new Contact(1, "Jean Bon", "jeanbon@email.fr"),
+            new Contact(2, "Bernard Lermitte", "bernardlermitte@email.fr")
         };
 
         public IActionResult Index()
@@ -28,7 +28,7 @@ namespace Exercie01Contacts.Controllers
         }
 
         [HttpPost]
-        public IActionResult Add(Contacts newContact)
+        public IActionResult Add(Contact newContact)
         {
             if (ModelState.IsValid)
             {
