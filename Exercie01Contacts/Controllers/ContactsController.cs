@@ -19,7 +19,7 @@ namespace Exercie01Contacts.Controllers
 
         public IActionResult Details(int id)
         {
-            var contact = contacts.Find(c => c.ID == id);
+            var contact = contacts.Find(c => c.Id == id);
             return View(contact);
         }
 
