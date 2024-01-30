@@ -16,17 +16,17 @@ namespace Exercie01Contacts.Controllers
         }
         public IActionResult Index()
         {
-            return View();
-        }
-
-        public IActionResult Details()
-        {
             List<ContactsController> contacts = new List<ContactsController>();
             {
                 contacts.Add(new ContactsController(ID = 1, Name = "Jean Bon", Email = "jeanbon@emial.fr"));
                 contacts.Add(new ContactsController(ID = 2, Name = "Bernard Lermitte", Email = "bernardlermitte@emial.fr"));
             }
 
+            return View();
+        }
+
+        public IActionResult Details()
+        {
             return View();
         }
 
