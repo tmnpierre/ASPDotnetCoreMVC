@@ -8,7 +8,6 @@
     <div class="text-center">
         <h1 class="display-4">Listes de nos Marmosets</h1>
     </div>
-
     <table class="table">
         <thead>
             <tr>
@@ -29,6 +28,9 @@
                     <td>@marmoset.Age</td>
                     <td>
                         <a href="@Url.Action("Details", "Marmosets", new { id = marmoset.Id })" class="btn btn-primary">Détails</a>
+                        <form method="post" action="@Url.Action("Remove", "Marmosets", new { id = marmoset.Id })">
+                            <button type="submit" class="btn btn-danger">Supprimer</button>
+                        </form>
                     </td>
                 </tr>
             }

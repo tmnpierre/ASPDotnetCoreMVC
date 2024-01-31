@@ -86,5 +86,25 @@ namespace Exercice02Marmosets.Controllers
                 .Select(s => s[random.Next(s.Length)]).ToArray());
         }
 
+        [HttpDelete("marmoset/{id}")]
+        public IActionResult Remove(int id)
+        {
+            var marmoset = _fakeMarmosetDB.GetById(id);
+            if (marmoset == null)
+            {
+                return NotFound(); 
+            }
+
+            bool removed = _fakeMarmosetDB.Remove(id);
+
+            if (removed)
+            {
+                return NoContent(); 
+            }
+            else
+            {
+                return BadRequest(); 
+            }
+        }
     }
 }
