@@ -1,24 +1,33 @@
 ﻿using Exercie01Contacts.Models;
 using Microsoft.AspNetCore.Mvc;
+using Exercie01Contacts.Data;
 
 namespace Exercie01Contacts.Controllers
 {
     public class ContactsController : Controller
     {
-        private static List<Contact> contacts = new List<Contact>()
+        private FakeContactDB _fakeContactDB;
+
+        // Utilisation de l'injection de dépendance pour FakeContactDB
+        public ContactsController(FakeContactDB fakeContactDB)
         {
-            new Contact(1, "Jean Bon", "jeanbon@email.fr"),
-            new Contact(2, "Bernard Lermitte", "bernardlermitte@email.fr")
-        };
+            _fakeContactDB = fakeContactDB;
+        }
 
         public IActionResult Index()
         {
+            var contacts = _fakeContactDB.GetAll();
             return View(contacts);
         }
 
         public IActionResult Details(int id)
         {
-            var contact = contacts.FirstOrDefault(c => c.Id == id);
+            var contact = _fakeContactDB.GetById(id);
+            if (contact == null)
+            {
+                return NotFound();
+            }
+
             return View(contact);
         }
 
@@ -32,8 +41,7 @@ namespace Exercie01Contacts.Controllers
         {
             if (ModelState.IsValid)
             {
-                newContact.Id = contacts.Any() ? contacts.Max(c => c.Id) + 1 : 1;
-                contacts.Add(newContact);
+                _fakeContactDB.Add(newContact);
                 return RedirectToAction(nameof(Index));
             }
 
