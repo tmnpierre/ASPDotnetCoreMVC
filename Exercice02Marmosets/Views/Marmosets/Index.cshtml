@@ -1,5 +1,40 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model List<Exercie02Marmosets.Models.Marmoset>
+
 @{
+    ViewData["Title"] = "Index";
 }
+
+<div class="container mt-4">
+    <div class="text-center">
+        <h1 class="display-4">Listes de nos Marmosets</h1>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameForInnerType((Marmoset model) => model.Id)</th>
+                <th>@Html.DisplayNameForInnerType((Marmoset model) => model.Name)</th>
+                <th>@Html.DisplayNameForInnerType((Marmoset model) => model.Description)</th>
+                <th>@Html.DisplayNameForInnerType((Marmoset model) => model.Age)</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var marmoset in Model)
+            {
+                <tr>
+                    <td>@marmoset.Id</td>
+                    <td>@marmoset.Name</td>
+                    <td>@marmoset.Description</td>
+                    <td>@marmoset.Age</td>
+                    <td>
+                        <a href="@Url.Action("Details", "Marmosets", new { id = contact.Id })" class="btn btn-primary">Détails</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <br />
+    <a href="@Url.Action("Add", "Marmoset")" class="btn btn-primary">Ajouter un marmoset</a>
+    <br />
+</div>
