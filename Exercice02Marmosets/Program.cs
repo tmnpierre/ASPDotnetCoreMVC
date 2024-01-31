@@ -6,6 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddSingleton<MarmosetDBContext>();
+builder.Services.AddSingleton<FakeMarmosetDB>();
 
 var app = builder.Build();
 
