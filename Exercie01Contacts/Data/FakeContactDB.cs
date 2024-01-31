@@ -11,9 +11,9 @@ namespace Exercie01Contacts.Data
         {
             _contacts = new List<Contact>()
         {
-            new Contact(1, "Jean Bon", "jeanbon@email.fr"),
-            new Contact(2, "Bernard Lermitte", "bernardlermitte@email.fr"),
-            new Contact(3, "Lara Clette", "laraclette@email.fr" )
+            new Contact(++_lastId, "Jean Bon", "jeanbon@email.fr"),
+            new Contact(++_lastId, "Bernard Lermitte", "bernardlermitte@email.fr"),
+            new Contact(++_lastId, "Lara Clette", "laraclette@email.fr" )
         };
         }
 
@@ -21,18 +21,26 @@ namespace Exercie01Contacts.Data
 
         public Contact? GetById(int id) { return _contacts.FirstOrDefault(model => model.Id == id); }
 
-        public bool Add(Contact contact) { _contacts.Add(contact); return true; }
+        public bool Add(Contact contact) { contact.Id = ++_lastId; _contacts.Add(contact); return true; }
 
-        public bool Edit(Contact contact) { throw new NotImplementedException(); }
+        public bool Edit(Contact contact)
+        {
+            var contactFromDB = GetById(contact.Id);
+            if (contactFromDB == null) return false;
+            contactFromDB.Name = contact.Name;
+            contactFromDB.Email = contact.Email;
+            return true;
+        }
 
         public bool Remove(int id)
         {
             var contact = GetById(id);
             if (contact == null)
             {
-
+                return false;
             }
-            else { }
+            _contacts.Remove(contact);
+            return true;
         }
     }
 }
