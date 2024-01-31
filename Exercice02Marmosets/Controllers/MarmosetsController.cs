@@ -58,7 +58,7 @@ namespace Exercice02Marmosets.Controllers
                 id: lastId + 1,
                 name: GenerateRandomName(),
                 description: GenerateRandomDescription(),
-                age: _random.Next(1, 12)
+                age: _random.Next(1, 50)
             );
 
             _fakeMarmosetDB.Add(randomMarmoset);
