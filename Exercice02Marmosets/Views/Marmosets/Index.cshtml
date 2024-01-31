@@ -27,21 +27,22 @@
                     <td>@marmoset.Description</td>
                     <td>@marmoset.Age</td>
                     <td>
-                        <a href="@Url.Action("Details", "Marmosets", new { id = marmoset.Id })" class="btn btn-primary">Détails</a>
-                        <form method="post" action="@Url.Action("Remove", "Marmosets", new { id = marmoset.Id })">
+                        <a asp-action="Details" asp-controller="Marmosets" asp-route-id="@marmoset.Id" class="btn btn-primary">Détails</a>
+                        <form method="post" asp-action="Remove" asp-controller="Marmosets" asp-route-id="@marmoset.Id">
                             <button type="submit" class="btn btn-danger">Supprimer</button>
                         </form>
-                    </td>
+                        </td>
                 </tr>
             }
         </tbody>
     </table>
     <br />
-    <a href="@Url.Action("Add", "Marmoset")" class="btn btn-primary">Ajouter un marmoset</a>
+    <a asp-action="Add" asp-controller="Marmoset" class="btn btn-primary">Ajouter un marmoset</a>
     <br />
     <br />
-    <form method="post" action="@Url.Action("AddRandom", "Marmosets")">
+    <form method="post" asp-action="AddRandom" asp-controller="Marmosets">
         <button type="submit" class="btn btn-secondary">Ajouter un Marmoset aléatoire</button>
     </form>
+
     <br />
 </div>
