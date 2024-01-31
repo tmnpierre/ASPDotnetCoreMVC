@@ -5,6 +5,7 @@ namespace Exercie01Contacts.Data
     public class FakeContactDB
     {
         private List<Contact> _contacts;
+        private int _lastId = 0;
 
         public FakeContactDB()
         {
@@ -20,10 +21,18 @@ namespace Exercie01Contacts.Data
 
         public Contact? GetById(int id) { return _contacts.FirstOrDefault(model => model.Id == id); }
 
-        public bool Add(Contact contact){ _contacts.Add(contact); return true; }
+        public bool Add(Contact contact) { _contacts.Add(contact); return true; }
 
         public bool Edit(Contact contact) { throw new NotImplementedException(); }
 
-        public bool Remove(Contact contact) { _contacts.Remove(contact); return true; }
+        public bool Remove(int id)
+        {
+            var contact = GetById(id);
+            if (contact == null)
+            {
+
+            }
+            else { }
+        }
     }
 }
