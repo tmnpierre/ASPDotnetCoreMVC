@@ -34,7 +34,7 @@ namespace Exercie01Contacts.Controllers
             {
                 newContact.Id = contacts.Any() ? contacts.Max(c => c.Id) + 1 : 1;
                 contacts.Add(newContact);
-                return RedirectToAction("Index");
+                return RedirectToAction(nameof(Index));
             }
 
             return View(newContact);
