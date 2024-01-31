@@ -70,12 +70,21 @@ namespace Exercice02Marmosets.Controllers
 
         private string GenerateRandomName()
         {
-            return "NomAléatoire";
+            return RandomString("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 5, 15);
         }
 
         private string GenerateRandomDescription()
         {
-            return "DescriptionAléatoire";
+            return RandomString("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", 15, 30);
         }
+
+        public static string RandomString(string chars, int minLength, int maxLength)
+        {
+            Random random = new Random();
+            int length = random.Next(minLength, maxLength + 1);
+            return new string(Enumerable.Repeat(chars, length)
+                .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+
     }
 }
