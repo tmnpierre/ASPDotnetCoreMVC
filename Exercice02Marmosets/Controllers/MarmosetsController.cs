@@ -4,7 +4,7 @@ using Exercice02Marmosets.Data;
 
 namespace Exercice02Marmosets.Controllers
 {
-    public class ContactsController : Controller
+    public class MarmosetsController : Controller
     {
         private FakeMarmosetDB _fakeMarmosetDB;
 

@@ -1,7 +1,11 @@
+using Exercice02Marmosets.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddSingleton<FakeMarmosetDB>();
 
 var app = builder.Build();
 
