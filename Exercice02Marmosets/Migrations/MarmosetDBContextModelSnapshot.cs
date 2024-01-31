@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Exercice02Marmosets.Migrations
 {
-    [DbContext(typeof(MarmosetDBContext))]
+    [DbContext(typeof(FakeMarmosetDB))]
     partial class MarmosetDBContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

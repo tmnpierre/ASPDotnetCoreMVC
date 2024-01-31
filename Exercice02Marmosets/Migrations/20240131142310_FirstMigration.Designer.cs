@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Exercice02Marmosets.Migrations
 {
-    [DbContext(typeof(MarmosetDBContext))]
+    [DbContext(typeof(FakeMarmosetDB))]
     [Migration("20240131142310_FirstMigration")]
     partial class FirstMigration
     {

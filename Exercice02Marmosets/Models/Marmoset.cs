@@ -15,9 +15,8 @@ namespace Exercice02Marmosets.Models
         [DisplayName("Age")]
         public int Age { get; set; }
 
-        public Marmoset(int id, string name, string description, int age)
+        public Marmoset(string name, string description, int age)
         {
-            Id = id;
             Name = name;
             Description = description;
             Age = age;
