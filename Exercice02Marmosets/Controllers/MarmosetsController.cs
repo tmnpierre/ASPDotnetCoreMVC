@@ -7,6 +7,7 @@ namespace Exercice02Marmosets.Controllers
     public class MarmosetsController : Controller
     {
         private FakeMarmosetDB _fakeMarmosetDB;
+        private Random _random = new Random();
 
         public MarmosetsController(FakeMarmosetDB fakeMarmosetDB)
         {
@@ -40,11 +41,25 @@ namespace Exercice02Marmosets.Controllers
         {
             if (ModelState.IsValid)
             {
+                newMarmoset.Name = GenerateRandomName();
+                newMarmoset.Description = GenerateRandomDescription();
+                newMarmoset.Age = _random.Next(1, 12);
+
                 _fakeMarmosetDB.Add(newMarmoset);
                 return RedirectToAction(nameof(Index));
             }
 
             return View(newMarmoset);
+        }
+
+        private string GenerateRandomName()
+        {
+            return "NomAléatoire";
+        }
+
+        private string GenerateRandomDescription()
+        {
+            return "DescriptionAléatoire";
         }
     }
 }
