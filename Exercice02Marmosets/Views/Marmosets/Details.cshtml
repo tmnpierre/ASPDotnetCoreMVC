@@ -1,5 +1,30 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model Exercie01Contacts.Models.Marmoset
+
 @{
+    ViewData["Title"] = "Details";
 }
+
+<div class="container mt-4">
+    <div class="text-center">
+        <h1 class="display-4">Notre Marmoset</h1>
+    </div>
+
+    @if (Model != null)
+    {
+        <div class="card">
+            <div class="card-header">
+                Détails
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">@Model.Name</h5>
+                <p class="card-text">@Model.Description</p>
+                <p class="card-text">@Model.Age</p>
+                <a href="@Url.Action("Index", "Marmosets")" class="btn btn-primary">Retour à la liste</a>
+            </div>
+        </div>
+    }
+    else
+    {
+        <p>Marmoset non trouvé.</p>
+    }
+</div>
