@@ -66,17 +66,19 @@ namespace Exercice02Marmosets.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-
+        [NonAction]
         private string GenerateRandomName()
         {
             return RandomString("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 5, 15);
         }
 
+        [NonAction]
         private string GenerateRandomDescription()
         {
             return RandomString("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", 15, 30);
         }
 
+        [NonAction]
         public static string RandomString(string chars, int minLength, int maxLength)
         {
             Random random = new Random();

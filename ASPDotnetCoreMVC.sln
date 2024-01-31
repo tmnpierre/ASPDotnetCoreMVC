@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Demos", "Demos", "{D1F678EF
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Exercices", "Exercices", "{E52E686D-D8D5-45C8-9A66-E1D94AFEE1BD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Exercie01Contacts", "Exercie01Contacts\Exercie01Contacts.csproj", "{1BB7CD1F-CAED-4687-906D-DD7856D756E6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Exercice01Contacts", "Exercie01Contacts\Exercice01Contacts.csproj", "{1BB7CD1F-CAED-4687-906D-DD7856D756E6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exercice02Marmosets", "Exercice02Marmosets\Exercice02Marmosets.csproj", "{1A8D748C-7CFC-4590-BCF1-31B4762945A7}"
 EndProject
