@@ -1,7 +1,6 @@
 ﻿using Exercice02Marmosets.Models;
 using Microsoft.AspNetCore.Mvc;
 using Exercice02Marmosets.Data;
-using System;
 
 namespace Exercice02Marmosets.Controllers
 {
