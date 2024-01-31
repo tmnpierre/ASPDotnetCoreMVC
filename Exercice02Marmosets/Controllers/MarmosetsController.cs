@@ -1,6 +1,7 @@
 ﻿using Exercice02Marmosets.Models;
 using Microsoft.AspNetCore.Mvc;
 using Exercice02Marmosets.Data;
+using System;
 
 namespace Exercice02Marmosets.Controllers
 {
@@ -16,8 +17,8 @@ namespace Exercice02Marmosets.Controllers
 
         public IActionResult Index()
         {
-            var marmoset = _fakeMarmosetDB.GetAll();
-            return View(marmoset);
+            var marmosets = _fakeMarmosetDB.GetAll();
+            return View(marmosets);
         }
 
         public IActionResult Details(int id)
@@ -41,16 +42,31 @@ namespace Exercice02Marmosets.Controllers
         {
             if (ModelState.IsValid)
             {
-                newMarmoset.Name = GenerateRandomName();
-                newMarmoset.Description = GenerateRandomDescription();
-                newMarmoset.Age = _random.Next(1, 12);
-
                 _fakeMarmosetDB.Add(newMarmoset);
                 return RedirectToAction(nameof(Index));
             }
 
             return View(newMarmoset);
         }
+
+        [HttpPost]
+        public IActionResult AddRandom()
+        {
+            int lastId = _fakeMarmosetDB.GetAll().Max(m => m.Id);
+
+            Marmoset randomMarmoset = new Marmoset(
+                id: lastId + 1,
+                name: GenerateRandomName(),
+                description: GenerateRandomDescription(),
+                age: _random.Next(1, 12)
+            );
+
+            _fakeMarmosetDB.Add(randomMarmoset);
+
+            var marmosets = _fakeMarmosetDB.GetAll();
+            return View("Index", marmosets);
+        }
+
 
         private string GenerateRandomName()
         {

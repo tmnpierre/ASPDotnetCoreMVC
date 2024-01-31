@@ -15,11 +15,11 @@ namespace Exercice02Marmosets.Models
         [DisplayName("Age")]
         public int Age { get; set; }
 
-        public Marmoset(int id, string name, string descripton, int age)
+        public Marmoset(int id, string name, string description, int age)
         {
             Id = id;
             Name = name;
-            Description = descripton;
+            Description = description;
             Age = age;
         }
     }
