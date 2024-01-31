@@ -12,7 +12,7 @@ namespace Exercice02Marmosets.Data
             _marmoset = new List<Marmoset>()
         {
             new Marmoset(++_lastId, "Jean Bon", "Tache brune sur la tête", 2),
-            new Marmoset(++_lastId, "Bernard Lermitte", "Aime les crêpe", 10),
+            new Marmoset(++_lastId, "Bernard Lermitte", "Aime les crêpes", 10),
             new Marmoset(++_lastId, "Lara Clette", "Aime jouer au ballon", 6)
         };
         }
