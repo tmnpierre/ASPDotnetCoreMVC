@@ -1,8 +1,9 @@
 ﻿using Exercice02Marmosets.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Exercice02Marmosets.Data
 {
-    public class FakeMarmosetDB
+    public class FakeMarmosetDB : DbContext
     {
         private List<Marmoset> _marmoset;
         private int _lastId = 0;

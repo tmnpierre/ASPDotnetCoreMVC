@@ -9,7 +9,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<MarmosetDBContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("BloggingDatabase")));
 
-// builder.Services.AddSingleton<FakeMarmosetDB>();
+builder.Services.AddSingleton<FakeMarmosetDB>();
 
 var app = builder.Build();
 
