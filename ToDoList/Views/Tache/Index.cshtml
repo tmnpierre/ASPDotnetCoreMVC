@@ -1,0 +1,41 @@
+﻿@model List<ToDoList.Models.Tache>
+
+@{
+    ViewData["Title"] = "Liste des Tâches";
+}
+
+<div class="container mt-4">
+    <div class="text-center">
+        <h1 class="display-4">Liste des Tâches</h1>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model[0].Id)</th>
+                <th>@Html.DisplayNameFor(model => model[0].Name)</th>
+                <th>@Html.DisplayNameFor(model => model[0].Description)</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var tache in Model)
+            {
+                <tr>
+                    <td>@tache.Id</td>
+                    <td>@tache.Name</td>
+                    <td>@tache.Description</td>
+                    <td>
+                        <a asp-action="Details" asp-controller="Tache" asp-route-id="@tache.Id" class="btn btn-primary">Détails</a>
+                        <form asp-action="Remove" asp-controller="Tache" asp-route-id="@tache.Id" method="post" class="d-inline">
+                            <button type="submit" class="btn btn-danger">Supprimer</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a asp-action="Add" asp-controller="Tache" class="btn btn-primary">Ajouter une tâche</a>
+    <form asp-action="AddRandom" asp-controller="Tache" method="post" class="mt-2">
+        <button type="submit" class="btn btn-secondary">Ajouter une tâche aléatoire</button>
+    </form>
+</div>
