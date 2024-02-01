@@ -2,7 +2,7 @@
 
 namespace ToDoList.Models
 {
-    public class ToDoList
+    public class ToDoLists
     {
         public int Id { get; set; }
 
