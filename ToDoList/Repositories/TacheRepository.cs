@@ -36,23 +36,27 @@ namespace ToDoList.Repositories
             return _dbContext.Taches.Where(predicate).ToList();
         }
 
-        public bool Update(Tache animal)
+        public bool Update(Tache tache)
         {
-            var tachesFromDb = GetById(marmoset.Id);
+            var tachesFromDb = GetById(tache.Id);
 
             if (tachesFromDb == null)
                 return false;
 
-            tachesFromDb.Name = marmoset.Name;
-            tachesFromDb.Description = marmoset.Description;
-            tachesFromDb.Age = marmoset.Age;
+            tachesFromDb.Name = tache.Name;
+            tachesFromDb.Description = tache.Description;
 
             return _dbContext.SaveChanges() > 0;
         }
 
         public bool Delete(int id)
         {
-            throw new NotImplementedException();
+            var tache = GetById(id);
+            if (tache == null)
+                return false;
+
+            _dbContext.Taches.Remove(tache);
+            return _dbContext.SaveChanges() > 0;
         }
     }
 }
