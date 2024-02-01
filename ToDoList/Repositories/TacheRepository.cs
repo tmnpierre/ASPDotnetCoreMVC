@@ -6,21 +6,26 @@ namespace ToDoList.Repositories
 {
     public class TacheRepository : ITacheRepository
     {
+        private readonly AppDbContext _dbContext;
+
+        public TacheRepository(AppDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
         public bool Add(Tache tache)
         {
-            throw new NotImplementedException();
+            var addedObj = _dbContext.Taches.Add(tache);
+            _dbContext.SaveChanges();
+            return addedObj.Entity.Id > 0;
         }
-
-        public bool Delete(int id)
+        public Tache? GetById(int id)
         {
-            throw new NotImplementedException();
+            return _dbContext.Taches.Find(id);
         }
-
         public Tache? Get(Expression<Func<Tache, bool>> predicate)
         {
-            throw new NotImplementedException();
+            return _dbContext.Taches.FirstOrDefault(predicate);
         }
-
         public List<Tache> GetAll()
         {
             throw new NotImplementedException();
@@ -31,12 +36,12 @@ namespace ToDoList.Repositories
             throw new NotImplementedException();
         }
 
-        public Tache? GetById(int id)
+        public bool Update(Tache animal)
         {
             throw new NotImplementedException();
         }
 
-        public bool Update(Tache animal)
+        public bool Delete(int id)
         {
             throw new NotImplementedException();
         }
