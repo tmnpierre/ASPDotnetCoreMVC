@@ -28,12 +28,12 @@ namespace ToDoList.Repositories
         }
         public List<Tache> GetAll()
         {
-            throw new NotImplementedException();
+            return _dbContext.Taches.ToList();
         }
 
         public List<Tache> GetAll(Expression<Func<Tache, bool>> predicate)
         {
-            throw new NotImplementedException();
+            return _dbContext.Taches.Where(predicate).ToList();
         }
 
         public bool Update(Tache animal)
