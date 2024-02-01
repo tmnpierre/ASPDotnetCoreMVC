@@ -15,6 +15,8 @@ namespace Exercice02Marmosets.Models
         [DisplayName("Age")]
         public int Age { get; set; }
 
+        public Marmoset() { }
+
         public Marmoset(string name, string description, int age)
         {
             Name = name;
