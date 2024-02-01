@@ -1,28 +1,28 @@
 ﻿using Exercice02Marmosets.Models;
-using Exercice02Marmosets.Data;
 using Microsoft.AspNetCore.Mvc;
+using Exercice02Marmosets.Repositories;
 
 namespace Exercice02Marmosets.Controllers
 {
     public class MarmosetsController : Controller
     {
-        private readonly MarmosetDBContext _context;
+        private readonly IMarmosetRepository _repository;
         private Random _random = new Random();
 
-        public MarmosetsController(MarmosetDBContext context)
+        public MarmosetsController(IMarmosetRepository repository)
         {
-            _context = context;
+            _repository = repository;
         }
 
         public IActionResult Index()
         {
-            var marmosets = _context.Marmosets.ToList();
+            var marmosets = _repository.GetAll();
             return View(marmosets);
         }
 
         public IActionResult Details(int id)
         {
-            var marmoset = _context.Marmosets.FirstOrDefault(m => m.Id == id);
+            var marmoset = _repository.GetById(id);
             if (marmoset == null)
             {
                 return NotFound();
@@ -41,8 +41,7 @@ namespace Exercice02Marmosets.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Marmosets.Add(newMarmoset);
-                _context.SaveChanges();
+                _repository.Add(newMarmoset);
                 return RedirectToAction(nameof(Index));
             }
 
@@ -52,16 +51,13 @@ namespace Exercice02Marmosets.Controllers
         [HttpPost]
         public IActionResult AddRandom()
         {
-            int lastId = _context.Marmosets.Any() ? _context.Marmosets.Max(m => m.Id) : 0;
-
             Marmoset randomMarmoset = new Marmoset(
                 name: GenerateRandomName(),
                 description: GenerateRandomDescription(),
                 age: _random.Next(1, 50)
             );
 
-            _context.Marmosets.Add(randomMarmoset);
-            _context.SaveChanges();
+            _repository.Add(randomMarmoset);
 
             return RedirectToAction(nameof(Index));
         }
@@ -89,14 +85,12 @@ namespace Exercice02Marmosets.Controllers
 
         public IActionResult Remove(int id)
         {
-            var marmoset = _context.Marmosets.FirstOrDefault(m => m.Id == id);
-            if (marmoset == null)
+            var result = _repository.Delete(id);
+            if (!result)
             {
                 return NotFound();
             }
 
-            _context.Marmosets.Remove(marmoset);
-            _context.SaveChanges();
             return RedirectToAction(nameof(Index));
         }
     }
