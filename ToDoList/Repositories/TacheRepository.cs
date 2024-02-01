@@ -38,7 +38,16 @@ namespace ToDoList.Repositories
 
         public bool Update(Tache animal)
         {
-            throw new NotImplementedException();
+            var tachesFromDb = GetById(marmoset.Id);
+
+            if (tachesFromDb == null)
+                return false;
+
+            tachesFromDb.Name = marmoset.Name;
+            tachesFromDb.Description = marmoset.Description;
+            tachesFromDb.Age = marmoset.Age;
+
+            return _dbContext.SaveChanges() > 0;
         }
 
         public bool Delete(int id)
