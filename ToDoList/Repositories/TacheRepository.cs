@@ -4,9 +4,9 @@ using System.Linq.Expressions;
 
 namespace ToDoList.Repositories
 {
-    public class ToDoListRepository : IToDoListRepository
+    public class TacheRepository : ITacheRepository
     {
-        public bool Add(ToDoLists tache)
+        public bool Add(Tache tache)
         {
             throw new NotImplementedException();
         }
@@ -16,27 +16,27 @@ namespace ToDoList.Repositories
             throw new NotImplementedException();
         }
 
-        public ToDoLists? Get(Expression<Func<ToDoLists, bool>> predicate)
+        public Tache? Get(Expression<Func<Tache, bool>> predicate)
         {
             throw new NotImplementedException();
         }
 
-        public List<ToDoLists> GetAll()
+        public List<Tache> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public List<ToDoLists> GetAll(Expression<Func<ToDoLists, bool>> predicate)
+        public List<Tache> GetAll(Expression<Func<Tache, bool>> predicate)
         {
             throw new NotImplementedException();
         }
 
-        public ToDoLists? GetById(int id)
+        public Tache? GetById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public bool Update(ToDoLists animal)
+        public bool Update(Tache animal)
         {
             throw new NotImplementedException();
         }
