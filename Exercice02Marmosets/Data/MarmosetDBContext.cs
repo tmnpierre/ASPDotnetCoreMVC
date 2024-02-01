@@ -7,9 +7,9 @@ namespace Exercice02Marmosets.Data
     {
         public DbSet<Marmoset>? Marmosets { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+
+        public MarmosetDBContext(DbContextOptions<MarmosetDBContext> options) : base(options)
         {
-            optionsBuilder.UseSqlServer("Data source=(localdb)\\MSSQLLocalDB; Database=exerciceMarmosetsDB;");
         }
     }
 }

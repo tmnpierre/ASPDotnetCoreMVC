@@ -1,12 +1,15 @@
 using Exercice02Marmosets.Data;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddSingleton<MarmosetDBContext>();
-builder.Services.AddSingleton<FakeMarmosetDB>();
+builder.Services.AddDbContext<MarmosetDBContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("BloggingDatabase")));
+
+// builder.Services.AddSingleton<FakeMarmosetDB>();
 
 var app = builder.Build();
 
