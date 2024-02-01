@@ -9,7 +9,18 @@ namespace Exercice02Marmosets.Data
 
 
         public MarmosetDBContext(DbContextOptions<MarmosetDBContext> options) : base(options)
+        { }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            var marmoset = new List<Marmoset>();
+            {
+                new Marmoset("Jean Bon", "Tache brune sur la tête", 2);
+                new Marmoset("Bernard Lermitte", "Aime les crêpes", 10);
+                new Marmoset("Lara Clette", "Aime jouer au ballon", 6);
+            }
+
+            modelBuilder.Entity<Marmoset>().HasData(marmoset);
         }
     }
 }
