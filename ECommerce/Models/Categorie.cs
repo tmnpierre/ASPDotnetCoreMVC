@@ -13,5 +13,11 @@ namespace ECommerce.Models
 
         [Display(Name = "Liste de produits de la catégorie")]
         public List<Product>? Products { get; set; }
+
+        public Categorie(string name, List<Product> products)
+        {
+            Name = name;
+            Products = products;
+        }
     }
 }
