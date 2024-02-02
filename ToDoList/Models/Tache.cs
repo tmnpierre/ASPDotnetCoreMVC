@@ -12,6 +12,8 @@ namespace ToDoList.Models
         [Display(Description = "Description de la tâche")]
         public string Description { get; set; }
 
+        public Tache() { }
+
         public Tache(string name, string description)
         {
             Name = name;
