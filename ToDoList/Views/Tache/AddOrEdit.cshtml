@@ -1,0 +1,27 @@
+﻿@model ToDoList.Models.Tache
+
+@{
+    var isEditMode = Model.Id > 0;
+    ViewData["Title"] = isEditMode ? "Modifier" : "Ajouter";
+}
+
+<h1>@ViewData["Title"] une tâche</h1>
+
+<form asp-action="AddOrEdit" method="post">
+    @if (isEditMode)
+    {
+        <input type="hidden" asp-for="Id" />
+    }
+    <div class="form-group">
+        <label asp-for="Name" class="control-label">Nom</label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Description" class="control-label">Description</label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary">@ViewData["Title"]</button>
+</form>

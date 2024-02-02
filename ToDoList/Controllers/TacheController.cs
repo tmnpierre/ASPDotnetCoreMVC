@@ -27,59 +27,57 @@ namespace ToDoList.Controllers
             {
                 return NotFound();
             }
-
             return View(tache);
         }
 
-        public IActionResult Add()
+        public IActionResult AddOrEdit(int id = 0)
         {
-            return View();
+            if (id == 0)
+                return View(new Tache());
+            else
+            {
+                var tache = _repository.GetById(id);
+                if (tache == null)
+                {
+                    return NotFound();
+                }
+                return View(tache);
+            }
         }
 
         [HttpPost]
-        public IActionResult Add(Tache newTache)
+        public IActionResult AddOrEdit(int id, Tache tache)
         {
             if (ModelState.IsValid)
             {
-                _repository.Add(newTache);
+                if (id == 0)
+                {
+                    _repository.Add(tache);
+                }
+                else 
+                {
+                    var success = _repository.Update(tache);
+                    if (!success)
+                    {
+                        ModelState.AddModelError("", "Une erreur s'est produite lors de la mise à jour.");
+                        return View(tache);
+                    }
+                }
                 return RedirectToAction(nameof(Index));
             }
-
-            return View(newTache);
+            return View(tache);
         }
 
-        [HttpPost]
         public IActionResult AddRandom()
         {
-            Tache randomTache = new Tache(
-                name: GenerateRandomName(),
-                description: GenerateRandomDescription()
-                );
+            Tache randomTache = new Tache
+            {
+                Name = GenerateRandomName(),
+                Description = GenerateRandomDescription()
+            };
 
             _repository.Add(randomTache);
-
             return RedirectToAction(nameof(Index));
-        }
-
-        [NonAction]
-        private string GenerateRandomName()
-        {
-            return RandomString("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 5, 15);
-        }
-
-        [NonAction]
-        private string GenerateRandomDescription()
-        {
-            return RandomString("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", 15, 30);
-        }
-
-        [NonAction]
-        public static string RandomString(string chars, int minLength, int maxLength)
-        {
-            Random random = new Random();
-            int length = random.Next(minLength, maxLength + 1);
-            return new string(Enumerable.Repeat(chars, length)
-                .Select(s => s[random.Next(s.Length)]).ToArray());
         }
 
         public IActionResult Remove(int id)
@@ -89,42 +87,25 @@ namespace ToDoList.Controllers
             {
                 return NotFound();
             }
-
             return RedirectToAction(nameof(Index));
         }
 
-        public IActionResult Edit(int id)
+        private string GenerateRandomName()
         {
-            var tache = _repository.GetById(id);
-            if (tache == null)
-            {
-                return NotFound();
-            }
-
-            return View(tache);
+            return RandomString("ABCDEFGHIJKLMNOPQRSTUVWXYZ", 5, 15);
         }
 
-        [HttpPost]
-        public IActionResult Edit(int id, Tache tache)
+        private string GenerateRandomDescription()
         {
-            if (id != tache.Id)
-            {
-                return NotFound();
-            }
+            return RandomString("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", 15, 30);
+        }
 
-            if (ModelState.IsValid)
-            {
-                var success = _repository.Update(tache);
-                if (success)
-                {
-                    return RedirectToAction(nameof(Index));
-                }
-                else
-                {
-                    ModelState.AddModelError("", "Une erreur c'est produite");
-                }
-            }
-            return View(tache);
+        public static string RandomString(string chars, int minLength, int maxLength)
+        {
+            Random random = new Random();
+            int length = random.Next(minLength, maxLength + 1);
+            return new string(Enumerable.Repeat(chars, length)
+                .Select(s => s[random.Next(s.Length)]).ToArray());
         }
     }
 }

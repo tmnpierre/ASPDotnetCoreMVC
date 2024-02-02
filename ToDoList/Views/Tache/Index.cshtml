@@ -34,7 +34,7 @@
                     </td>
                     <td>
                         <a asp-action="Details" asp-controller="Tache" asp-route-id="@tache.Id" class="btn btn-primary">Détails</a>
-                        <a asp-action="Edit" asp-controller="Tache" asp-route-id="@tache.Id" class="btn btn-warning">Éditer</a>
+                        <a asp-action="AddOrEdit" asp-controller="Tache" asp-route-id="@tache.Id" class="btn btn-warning">Éditer</a>
                         <form asp-action="Remove" asp-controller="Tache" asp-route-id="@tache.Id" method="post" class="d-inline">
                             <button type="submit" class="btn btn-danger">Supprimer</button>
                         </form>
@@ -43,7 +43,7 @@
             }
         </tbody>
     </table>
-    <a asp-action="Add" asp-controller="Tache" class="btn btn-primary">Ajouter une tâche</a>
+    <a asp-action="AddOrEdit" asp-controller="Tache" class="btn btn-primary">Ajouter une tâche</a>
     <form asp-action="AddRandom" asp-controller="Tache" method="post" class="mt-2">
         <button type="submit" class="btn btn-secondary">Ajouter une tâche aléatoire</button>
     </form>
