@@ -12,5 +12,6 @@ namespace ToDoList.Repositories
         TEntity? GetById(int id);
         bool Update(TEntity tache);
         bool Delete(int id);
+        bool Edit(int id);
     }
 }

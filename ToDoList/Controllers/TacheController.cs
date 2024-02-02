@@ -92,5 +92,39 @@ namespace ToDoList.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
+        public IActionResult Edit(int id)
+        {
+            var tache = _repository.GetById(id);
+            if (tache == null)
+            {
+                return NotFound();
+            }
+
+            return View(tache);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(int id, Tache tache)
+        {
+            if (id != tache.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                var success = _repository.Update(tache);
+                if (success)
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Une erreur c'est produite");
+                }
+            }
+            return View(tache);
+        }
     }
 }
