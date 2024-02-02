@@ -12,8 +12,8 @@ namespace ECommerce.Models
         public string? Name { get; set; }
 
         [Display(Name = "Marque du produit")]
-        [Required(ErrorMessage = "La marque du produit est requis.")]
-        [StringLength(20, MinimumLength = 3, ErrorMessage = "Le nom de la marque doit être compris entre 3 et 20 caractères.")]
+        [Required(ErrorMessage = "La marque du produit est requise.")]
+        [StringLength(20, MinimumLength = 3, ErrorMessage = "La marque du produit doit être comprise entre 3 et 20 caractères.")]
         public string? Brand { get; set; }
 
         [Display(Name = "Description du produit")]
