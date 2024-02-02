@@ -34,9 +34,19 @@ namespace ECommerce.Models
         [Display(Name = "Catégorie du produit")]
         [Required(ErrorMessage = "La catégorie du produit est requise.")]
         [StringLength(50, MinimumLength = 3, ErrorMessage = "La catégorie du produit doit être comprise entre 3 et 50 caractères.")]
-        public string? Category { get; set; }
+        public string? Categorie { get; set; }
 
         [Display(Name = "Illustration du produit")]
         public string? PicturePath { get; set; }
+
+        public Product(string name, string brand, string description, decimal price, int quantityInStock, string categorie)
+        {
+            Name = name; 
+            Brand = brand; 
+            Description = description; 
+            Price = price; 
+            QuantityInStock = quantityInStock; 
+            Categorie = categorie;
+        }
     }
 }
