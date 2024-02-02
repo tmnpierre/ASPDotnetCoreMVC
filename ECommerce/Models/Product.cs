@@ -39,14 +39,16 @@ namespace ECommerce.Models
         [Display(Name = "Illustration du produit")]
         public string? PicturePath { get; set; }
 
-        public Product(string name, string brand, string description, decimal price, int quantityInStock, string categorie)
+        public Product(int id, string name, string brand, string description, decimal price, int quantityInStock, string categorie, string picturePath)
         {
+            Id = id;
             Name = name; 
             Brand = brand; 
             Description = description; 
             Price = price; 
             QuantityInStock = quantityInStock; 
             Categorie = categorie;
+            PicturePath = picturePath;
         }
     }
 }

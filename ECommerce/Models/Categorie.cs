@@ -14,8 +14,9 @@ namespace ECommerce.Models
         [Display(Name = "Liste de produits de la catégorie")]
         public List<Product>? Products { get; set; }
 
-        public Categorie(string name, List<Product> products)
+        public Categorie(int id, string name, List<Product> products)
         {
+            Id = id;
             Name = name;
             Products = products;
         }
