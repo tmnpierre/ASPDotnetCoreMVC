@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ECommerce.Models
 {
@@ -9,16 +11,10 @@ namespace ECommerce.Models
         [Display(Name = "Nom de la catégorie")]
         [Required(ErrorMessage = "Le nom de la catégorie est requis.")]
         [StringLength(50, MinimumLength = 3, ErrorMessage = "Le nom de la catégorie doit être compris entre 3 et 50 caractères.")]
-        public string? Name { get; set; }
+        public string Name { get; set; }
 
-        [Display(Name = "Liste de produits de la catégorie")]
-        public List<Product>? Products { get; set; }
+        public virtual ICollection<Product> Products { get; set; }
 
-        public Categorie(int id, string name, List<Product> products)
-        {
-            Id = id;
-            Name = name;
-            Products = products;
-        }
+        public Categorie() { Products = new HashSet<Product>(); }
     }
 }
